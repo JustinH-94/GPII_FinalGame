@@ -1,0 +1,41 @@
+Release Notes version 1 POC
+
+- Created most of the 3D models
+	Minor in design, not really focused on how they look. At least look distiguishable
+	from eahc other
+- Coded The types of units
+	-FearDaSphere: Range Unit that deals moderate damage. Moderate HP.
+	-BlockingBlock: Close Range Unit that deals high damage at a slow rate. High HP.
+	-BirdPlane: Range Unit that deals low damage but at a high rate. Low HP.
+	-CruiserBruiser: Range Unit that deals high damage, but low rate. High HP.
+	-States: Spawn, wait, search, AttackUnit, AttackBuilding, Retreat, Defend.
+		-Spawn: Instantiate unit
+		-wait: wait at location until certain num of units are created
+		-search: once X num of units are created. Move to enemy base
+		-AttackUnit: If unit sees the enemy. Attack unit.
+		-AttackBuilding: Once unit is in enemybase vicinity. Attack the buildings
+		-Retreat: Not coded yet
+		-Defend: Once enemy units enter Base vicinity. Units will return to base and
+			attack the enemy units until all units are gone. Once done, units will
+			return to attacking the base
+	Errors:
+	-Units are using raycast and doesn't perfectly "see" enemy units in front, so some enemies
+	will just walk past.
+	-Didn't code the attackBuilding state properly. Sometimes the units will not attack all buildings
+	due to errors.
+	-Units may just walk past everything and go the edge of the map.
+- Coded Types of Buildings
+	-Barrack: creates FearDaSphere and BlockingBlock
+	-RadioStation: Creates BirdPlane and CruiserBruiser
+	-Base: Useless
+
+- Player & Enemy System Code
+	- Has 2 static int lists to track the num of buildings and units
+	- detects if all buildings are destroyed, then that player/enemy loses.
+	- Has trigger to alert units that enemies are attacking the base
+	- Detects if player/enemy is at unit cap
+- Player Control
+	- Player can move mouse cursor to the edge of the screen to move the camera
+	- Player can click on a building that opens UI panel to create units
+	
+	
